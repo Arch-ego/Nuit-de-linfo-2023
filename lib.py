@@ -1,4 +1,5 @@
 import sqlite3
+import json
 
 database = sqlite3.connect("database/ndl.db")
 databaseCursor = database.cursor()
@@ -31,6 +32,15 @@ def updateData(table: str, columns: str | list[str], newValues: list, parameter:
     databaseCursor.execute(query)
 
     return True
+
+def getDataJSON():
+    with open("database/data.json", 'r') as dataJSON:
+        databaseJSON = json.load(dataJSON)
+    return databaseJSON
+
+def saveDataJSON(data):
+    with open("database/data.json", 'w') as dataJSON:
+        json.dump(data, dataJSON)
 
 # Example
 res = getData("NoFakes", "*", None, None)
