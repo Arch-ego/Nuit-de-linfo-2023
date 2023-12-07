@@ -50,4 +50,4 @@ class Jeu:
             self.joueur.battle()
 
 jeu = Jeu()
-jeu.run
+jeu.run()
