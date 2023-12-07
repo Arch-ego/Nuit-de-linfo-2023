@@ -1,5 +1,6 @@
-import uuid
+import uuid, random
 from flask import Flask, render_template, redirect, url_for, request, session
+from lib import getData, updateData
 
 app = Flask(__name__)
 app.secret_key = b'6b1c2d979b55431bdc13c133bc026c80311b606aad7f3987b6638970bff1a5e1'
@@ -11,11 +12,62 @@ def index():
 @app.route("/game")
 def game():
     userID = id = uuid.uuid4()
-    return render_template("game.html")
+    factsIDS = getData("Game", "ID", None, None)
+    factsChosen = []
+    context = []
 
-@app.route('/bilan')
+    for i in range(5):
+        correctResponseID = random.choice(factsIDS)[0]
+        while correctResponseID in factsChosen:
+            correctResponseID = random.choice(factsIDS)[0]
+        factsChosen.append(correctResponseID)
+
+        fact = getData("Game", "*", "ID", correctResponseID)
+        correctReponse = fact[1]
+        monsterDialog = fact[2]
+        badResponse1 = fact[3]
+        badResponse2 = fact[4]
+        badResponse3 = fact[5]
+        badResponses = [badResponse1, badResponse2, badResponse3]
+        context.append({
+            "ID": correctResponseID,
+            "correctResponse": correctReponse,
+            "monsterDialog": monsterDialog,
+            "badResponses": badResponses
+        })
+    
+    return render_template("game.html", context=context)
+
+@app.route("/bilan")
 def bilan():
     data = {}
+
+    return render_template("bilan.html", sessionData=data)
+
+
+@app.route('/api/sessions/<uuid>')
+def sessions(uuid):
+    pass
+
+@app.route('/fact/<id>')
+def specificFact(id):
+    factTuple = getData("Fact", "*", "id", id)
+    fact = {
+        "info": factTuple[0],
+        "fullText": factTuple[1],
+        "source": factTuple[2]
+    }
+
+    return render_template("specificfact.html", factData=fact)
+
+@app.route('/bilan/<uuid>')
+def bilan(uuid):
+
+    data = {
+        "facts": [1, 2, 3, 4, 5],
+        "correctAnswers": [1, 3, 5],
+        "incorrectAnswers": [2, 4]
+    }
 
     return render_template("bilan.html", sessionData=data)
 

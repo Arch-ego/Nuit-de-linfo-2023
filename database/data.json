@@ -1,0 +1,36 @@
+{
+    "sessions": {
+        "uuid": [
+            {
+                "ID": 123,
+                "correctResponse": "La bonne réponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": ["Mauvaise réponse 1", "Mauvaise réponse 2", "Mauvaise réponse 3"]
+            },
+            {
+                "ID": 456,
+                "correctResponse": "La bonne réponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": ["Mauvaise réponse 1", "Mauvaise réponse 2", "Mauvaise réponse 3"]
+            },
+            {
+                "ID": 789,
+                "correctResponse": "La bonne réponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": ["Mauvaise réponse 1", "Mauvaise réponse 2", "Mauvaise réponse 3"]
+            },
+            {
+                "ID": 234,
+                "correctResponse": "La bonne réponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": ["Mauvaise réponse 1", "Mauvaise réponse 2", "Mauvaise réponse 3"]
+            },
+            {
+                "ID": 567,
+                "correctResponse": "La bonne réponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": ["Mauvaise réponse 1", "Mauvaise réponse 2", "Mauvaise réponse 3"]
+            }
+        ]
+    }
+}
