@@ -23,7 +23,7 @@
   <canvas id="tetrisCanvas" width="300" height="600"></canvas>
   <div>
     <h1 class="fourofour">404</h1>
-    <p>Tu t'es écarté du droit chemin, mais ce n'est pas grave. <br> En attendant, voici un petit jeu pour toi. <br> Quand tu es prêt, clique <a href="/">ici</a> pour revenir parmi nous.</p>
+    <p class="translate">Tu t'es écarté du droit chemin, mais ce n'est pas grave. <br> En attendant, voici un petit jeu pour toi. <br> Quand tu es prêt, clique <a href="/">ici</a> pour revenir parmi nous.</p>
   </div>
 
 
@@ -218,7 +218,8 @@
       }
     });
   </script>
-  {% if lang != "fr" %}
+  {% if lang != "FR" %}
+  <div class="hidden-lang hidden" id="{{ lang }}"></div>
   <script src="/static/js/trad.js"></script>
   {% endif %}
 </body>

@@ -1,5 +1,5 @@
-import uuid, random, requests, urllib.parse
-from flask import Flask, render_template, redirect, url_for, request, session
+import uuid, random
+from flask import Flask, render_template, redirect, url_for, request, session, make_response
 from lib import getData, getDataJSON, saveDataJSON
 
 app = Flask(__name__)
@@ -11,19 +11,9 @@ def notfound(e):
 
 @app.route("/")
 def index():
-    """if request.args.get('lang', default="fr") == None:
-        translatedText = {}
-
-        headers = {
-            "Authorization": "DeepL-Auth-Key 9b267d6b-166b-e365-0c72-8a1c7563d476:fx",
-            "Content-Type": "x-www-form-urlencoded"
-        }
-        requestData = {
-            "text": urllib.parse.quote_plus()
-        }
-
-        return render_template("translateindex.html", translatedText=translatedText)"""
-    return render_template("index.html", lang=request.args.get('lang', default="fr"))
+    response = make_response(render_template("index.html", lang=request.args.get('lang', default="FR")))
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    return response
 
 @app.route("/game")
 def game():
@@ -56,12 +46,10 @@ def game():
     data["sessions"][userID] = context
     saveDataJSON(data)
     
-    return render_template("game.html", context=context)
+    response = make_response(render_template("game.html", context=context))
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    return response
 
-
-@app.route('/api/sessions/<uuid>')
-def sessions(uuid):
-    pass
 
 @app.route('/fact/<id>')
 def specificFact(id):
@@ -72,7 +60,9 @@ def specificFact(id):
         "source": factTuple[3]
     }
 
-    return render_template("specificfact.html", factData=fact)
+    response = make_response(render_template("specificfact.html", factData=fact))
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    return response
 
 @app.route('/bilan/<uuid>')
 def bilan(uuid):
@@ -91,7 +81,9 @@ def bilan(uuid):
         }
         sessionFacts.append(fact)
 
-    return render_template("bilan.html", sessionFacts=sessionFacts)
+    response = make_response(render_template("bilan.html", sessionFacts=sessionFacts))
+    response.headers['Access-Control-Allow-Origin'] = "*"
+    return response
 
 if __name__ == "__main__":
     app.run(debug=True)

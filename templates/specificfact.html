@@ -4,24 +4,27 @@
 <div class="flex flex-column">
     <div class="factThanks p-5">
         <h1 class="text-danger text-center fw-bold">Fake or Fact</h1>
-        <p class="text-secondary text-center fs-5">
-            Merci d'être arrivé jusqu'ici ! On espère que le jeu vous a plu. <br>
-            Maintenant, voyons de plus près dans quels cas vous avez décelé les fact <br>
-            des fake news de la part des villageois et des monstres, en vous éduquant un peu plus sur le sujet !
+        <p class="text-secondary text-center fs-5 translate">
+            Voici des informations plus détailées sur ce fact.
         </p>     
     </div>
     <div class="container p-0 m-3">
         <div class="row">
             <div class="col-9">
-                <h3 class="fw-bold p-4"><u>{{ factData["info"] }}</u></h3>
-                <p>{{ factData["fullText"] }}</p>
+                <h3 class="fw-bold p-4 translate"><u>{{ factData["info"] }}</u></h3>
+                <p class="translate">{{ factData["fullText"] }}</p>
             </div>
             <div class="col-3">
-                <p class="fw-bold">Source :</p><p class="mb-5"><img src="{{ factData['source'] + 'favicon.ico' }}" alt="Logo du site"> {{ factData["source"] }}</p>
-                <a href="{{ factData['source'] }}" class="btn btn-danger mt-5">En savoir plus</a>
+                <p class="fw-bold translate">Source :</p><p class="mb-5"><img src="{{ factData['source'] + 'favicon.ico' }}" alt="Logo du site"> {{ factData["source"] }}</p>
+                <a href="{{ factData['source'] }}" class="btn btn-danger mt-5 translate">En savoir plus</a>
             </div>
         </div>
     </div>
 </div>
+
+{% if lang != "FR" %}
+<div class="hidden-lang hidden" id="{{ lang }}"></div>
+<script src="/static/js/trad.js"></script>
+{% endif %}
 
 {% endblock %}
