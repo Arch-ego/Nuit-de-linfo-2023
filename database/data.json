@@ -2,209 +2,103 @@
     "sessions": {
         "uuid": [
             {
-                "ID": 123,
-                "correctResponse": "La bonne r\u00c3\u00a9ponse",
-                "monsterDialog": "Le dialogue du monstre",
+                "ID": 1,
+                "correctResponse": "Tu as tort ! Le climat c'est lensemble des lments qui caractrisent ltat moyen de latmosphre sur une longue priode d'au moins trente ans.",
+                "monsterDialog": "Le climat c'est les conditions mtorologiques dun instant donn ou dune courte priode (une journe, une semaine, etc.).",
                 "badResponses": [
-                    "Mauvaise r\u00c3\u00a9ponse 1",
-                    "Mauvaise r\u00c3\u00a9ponse 2",
-                    "Mauvaise r\u00c3\u00a9ponse 3"
+                    "Le climat c'est facile, c'est juste l'volution de la temprature sur Terre.",
+                    "Un article dit que le climat c'est un terme plus complexe pour dfinir la mto.",
+                    "le climat c'est la mteo d'une ville"
                 ]
             },
             {
-                "ID": 456,
-                "correctResponse": "La bonne r\u00c3\u00a9ponse",
-                "monsterDialog": "Le dialogue du monstre",
+                "ID": 2,
+                "correctResponse": "D'ici 2050 avec des actions gouvernementale et structurelle on pourrait rduire l'mission des gaz  effet de serre de 40%-70%",
+                "monsterDialog": "On peut rduire l'mission des gaz  effet de serre de 2% ce qui n'est pas beaucoup, c 'est pas en arretant de prendre la voiture qu'il va y avoir une grosse difference.",
                 "badResponses": [
-                    "Mauvaise r\u00c3\u00a9ponse 1",
-                    "Mauvaise r\u00c3\u00a9ponse 2",
-                    "Mauvaise r\u00c3\u00a9ponse 3"
+                    "Seulement 50 personnes doivent changer leurs habitudes pour rduire de 30%-60% l'mission de gaz  effet de serre ",
+                    "En faisant collectivement des efforts on peut rduire jusqu' 20% l'mission de gaz  effet de serre ",
+                    "90% des missions  effet de serre peuvent tre rduit si les pays les plus dvelopps rduisent leur consommation de 5%"
                 ]
             },
             {
-                "ID": 789,
-                "correctResponse": "La bonne r\u00c3\u00a9ponse",
-                "monsterDialog": "Le dialogue du monstre",
+                "ID": 3,
+                "correctResponse": "Non ! le rchauffement devrait avoir dpass les 2C avec notre mission actuelle de gaz  effet de serre ",
+                "monsterDialog": "Pas d'inquitude, la temprature stagne et stagnera.",
                 "badResponses": [
-                    "Mauvaise r\u00c3\u00a9ponse 1",
-                    "Mauvaise r\u00c3\u00a9ponse 2",
-                    "Mauvaise r\u00c3\u00a9ponse 3"
+                    "Mais non le rchauffement devrait avoir dpass les 9C se qui entranerait une hausse des incendies",
+                    "Je vous dit que c'est urgent, d'ici la fin de l'anne on est tous mort, +25C!",
+                    "La vrit, c'est que la temprature varie normalement, nous n'influons pas sur les tempratures  venir."
                 ]
             },
             {
-                "ID": 234,
-                "correctResponse": "La bonne r\u00c3\u00a9ponse",
-                "monsterDialog": "Le dialogue du monstre",
+                "ID": 4,
+                "correctResponse": "Tu as tort pour attnuer le gaz  effet de serre il faut planter plus d'arbres et changer son empreinte carbone ",
+                "monsterDialog": "pour attnuer l'mission de gaz  effet de serre il suffit d'utiliser le BECCS (bionergie, captage, et stockage du carbone",
                 "badResponses": [
-                    "Mauvaise r\u00c3\u00a9ponse 1",
-                    "Mauvaise r\u00c3\u00a9ponse 2",
-                    "Mauvaise r\u00c3\u00a9ponse 3"
+                    "Non ! il faut utiliser un aspirateur ",
+                    "Pas du tout ! il faut bombarder la terre pour expulser le CO2",
+                    "Encore mieux ! on envoie du -CO2 pour annuler le CO2"
                 ]
             },
             {
-                "ID": 567,
-                "correctResponse": "La bonne r\u00c3\u00a9ponse",
-                "monsterDialog": "Le dialogue du monstre",
+                "ID": 5,
+                "correctResponse": "Tu a tort les quatre dernires deccenies indiquent que la temprature a augment en moyenne de 1.1C",
+                "monsterDialog": "Les 4 dernires decennies montrent une diminution de -3C",
                 "badResponses": [
-                    "Mauvaise r\u00c3\u00a9ponse 1",
-                    "Mauvaise r\u00c3\u00a9ponse 2",
-                    "Mauvaise r\u00c3\u00a9ponse 3"
-                ]
-            }
-        ],
-        "17414b2e-2d3f-49da-b2fa-36e04de059d6": [
-            {
-                "ID": 456,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
+                    "Mme pas vrai ! Tout le monde sait que cela n'existe pas",
+                    "Pffff ! La temprature est seulement monte de 35C",
+                    "Je sais ! La temprature est descendue de -40 dans la plupart des pays "
                 ]
             },
             {
-                "ID": 123,
-                "correctResponse": null,
-                "monsterDialog": null,
+                "ID": 6,
+                "correctResponse": "L'cart de temprature peut aller jusqu' 12C entre les zones rurales et les grandes villes ",
+                "monsterDialog": "Il n'y a pas de diffrence de temprature entre la ville et les zones rurales",
                 "badResponses": [
-                    null,
-                    null,
-                    null
+                    "Le bton retrouv en ville permet de diminuer la temprature compar aux zones rurales ",
+                    "Les arbres ne permettent pas de diminuer la temprature ",
+                    "Il y a une diffrence allant jusqu' 20C dans les grandes villes compar aux zones rurales "
                 ]
             },
             {
-                "ID": 234,
-                "correctResponse": null,
-                "monsterDialog": null,
+                "ID": 7,
+                "correctResponse": "La baisse importante de l'mission de l'effet de serre permettrait au rchauffement climatique d'tre infrieur  2C, rduisant ainsi la crise cologique",
+                "monsterDialog": "La baisse importante de l'mission de l'effet de serre n'influencerais pas le rchauffement climatique, empechant la fonte des glaces d'augmenter ",
                 "badResponses": [
-                    null,
-                    null,
-                    null
+                    "le rchauffement devrait diminuer de -2C, ce qui va augmenter l'mission des gaz  effet de serre et qui fera en sorte que les glaciers se reforment ",
+                    "La baisse des missions de gaz  effet de serre aurait un impact sur le rchauffement climatique qui devrait tre diminuer de 5C, reduisant un peu l'impact cologique mais pas assez ",
+                    "La baisse ponctuelle de l'mission de gaz  effet de serre permettrait d'avoir une augmentation de 3C, reduisant un peu l'impact cologique mais pas assez "
                 ]
             },
             {
-                "ID": 789,
-                "correctResponse": null,
-                "monsterDialog": null,
+                "ID": 8,
+                "correctResponse": "Une augmentation continue de l'emission des gaz  effet de serre provoquerait d'ici 210m une augmentation de +4C voire de +5C",
+                "monsterDialog": "Une augmentation de l'mission des gaz  effet de serre provoquerait une augmentation de la temprature allant jusqu' +10C dans les 15 prochaines annes ",
                 "badResponses": [
-                    null,
-                    null,
-                    null
+                    "le rchauffement devrait diminuer de -2C si l'on augmente l'mission de gaz  effet de serre ",
+                    "le rchauffement devrait rester constant si l'on continue  mettre autant de gaz  effet de serre ",
+                    "le rchauffement devrait augmenter de 1,5C en continuant d'mettre autant de gaz  effet de serre "
                 ]
             },
             {
-                "ID": 567,
-                "correctResponse": null,
-                "monsterDialog": null,
+                "ID": 9,
+                "correctResponse": "la solution pour l'attnuation et l'adaptation est l'agrocologie",
+                "monsterDialog": "Je vous dis quil faut arrter de recycler,  la fin tous les dchets sont mlangs.",
                 "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            }
-        ],
-        "7ac4062d-0075-4123-946d-cd4093c26507": [
-            {
-                "ID": 789,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
+                    "Au lieu de mettre la clim l't, allumer un ventilateur.",
+                    "pdaler pour faire de l'lectricit ",
+                    "Utiliser un maximum les nergies fossiles."
                 ]
             },
             {
-                "ID": 567,
-                "correctResponse": null,
-                "monsterDialog": null,
+                "ID": 10,
+                "correctResponse": "-2t CO2eq",
+                "monsterDialog": "L'usage de la voiture pour des voyages personnel est normal et tres ecologique car il se font sur de courte distance.",
                 "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 234,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 456,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 123,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            }
-        ],
-        "26acf07e-2ded-4d41-ae04-a7084db89833": [
-            {
-                "ID": 123,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 567,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 456,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 234,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
-                ]
-            },
-            {
-                "ID": 789,
-                "correctResponse": null,
-                "monsterDialog": null,
-                "badResponses": [
-                    null,
-                    null,
-                    null
+                    "-1t CO2eq",
+                    "-0t CO2eq",
+                    "-0,5t CO2eq"
                 ]
             }
         ]

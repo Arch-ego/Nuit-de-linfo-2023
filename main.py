@@ -4,11 +4,21 @@ from monster import Monster
 from villager import Villager
 from random import choice, shuffle
 from os.path import join, dirname, realpath
+from unidecode import unidecode
 
+coupe = lambda x: (x[:len(x)//2], x[len(x)//2:])
+
+"""
 con = sqlite3.connect(join(join(dirname(realpath(__file__)),'database'), "ndl.db"), check_same_thread=False)
 cur = con.cursor()
+data = {"sessions":{"uuid":[]}}
+all_data = cur.execute("SELECT * FROM Game;").fetchall()
+for d in all_data:
+    data["sessions"]["uuid"].append({"ID":d[0], "correctResponse":unidecode(d[1]), "monsterDialog": unidecode(d[2]), "badResponses":[unidecode(d[3]), unidecode(d[4]), unidecode(d[5])]})
+with open("data.json", "w") as file:
+    json.dump(data, file)
+"""
 
-print(cur.execute("SELECT * FROM Game;").fetchall())
 class Jeu:
     def __init__ (self):
         self.player = Player()
@@ -17,7 +27,7 @@ class Jeu:
         self.pnj = None
         self.list_monster = []
         self.list_villager = [Villager(10, 20),Villager(5, 60),Villager(60, 10),Villager(60, 50),Villager(90, 90)]
-        pyxel.init(256, 256, title="Nom", fps=30, quit_key=pyxel.KEY_ESCAPE)
+        pyxel.init(256, 256, title="Ecodève.exe", fps=30, quit_key=pyxel.KEY_ESCAPE)
         pyxel.load("static/my_resource.pyxres")
         pyxel.playm(0, 1000, True)
         pyxel.run(self.update, self.draw)
@@ -127,21 +137,28 @@ class Jeu:
                 pyxel.blt(v.x, v.y, 0, 51, 37, 8, 11, 7)
         elif self.etat == "combat":
             pyxel.cls(0)
-            pyxel.text(10, 10, f" le polluant affirme que {self.adv.facts}", 1)
-            pyxel.text(10, 20, "Quelle est la vraie affirmation ?", 1)
-            pyxel.text(10, 30, f"1 : {self.adv.reponse1}", 1)
-            pyxel.text(10, 40, f"2 : {self.adv.reponse2}", 1)
-            pyxel.text(10, 50, f"3 : {self.adv.reponse3}", 1)
-            pyxel.text(10, 60, f"4 : {self.adv.reponse4}", 1)
-            pyxel.text(10, 70, "quelle est l'information correcte ?", 2)
+            pyxel.text(5, 10, f"Le polluant affirme que :", 1)
+            pyxel.text(5, 20, f"{coupe(self.adv.facts)[0]}", 2)
+            pyxel.text(5, 30, f"{coupe(self.adv.facts)[1]}", 2)
+            pyxel.text(5, 50, "Quelle est la vraie affirmation ?", 1)
+            pyxel.text(5, 60, f"1 : {coupe(self.adv.reponse1)[0]}", 3)
+            pyxel.text(5, 70, f"{coupe(self.adv.reponse1)[1]}", 3)
+            pyxel.text(5, 80, f"2: {coupe(self.adv.reponse2)[0]}", 3)
+            pyxel.text(5, 90, f"{coupe(self.adv.reponse2)[1]}", 3)
+            pyxel.text(5, 100, f"3 : {coupe(self.adv.reponse3)[0]}", 3)
+            pyxel.text(5, 110, f"{coupe(self.adv.reponse3)[1]}", 3)
+            pyxel.text(5, 120, f"4: {coupe(self.adv.reponse4)[0]}", 3)
+            pyxel.text(5, 130, f"{coupe(self.adv.reponse4)[1]}", 3)
+            pyxel.text(5, 140, "quelle est l'information correcte ?", 2)
         elif self.etat == "talking":
             pyxel.cls(0)
             with open(join(join(dirname(realpath(__file__)),'database'), "data.json"), "r") as file:
                 data = json.load(file)
                 
-            pyxel.text(10, 10, " Le villageois affirme que", 1)
-            pyxel.text(10, 20, f"{data['sessions']['uuid'][self.list_villager.index(self.pnj)]['NPCDialog']}", 1)
-            pyxel.text(10, 30, "Appuie sur E pour retourner sur le jeu", 3)
+            pyxel.text(5, 10, " Le villageois affirme que", 1)
+            pyxel.text(5, 20, f"{coupe(data['sessions']['uuid'][self.list_villager.index(self.pnj)]['correctResponse'])[0]}", 2)
+            pyxel.text(5, 30, f"{coupe(data['sessions']['uuid'][self.list_villager.index(self.pnj)]['correctResponse'])[1]}", 2)
+            pyxel.text(5, 40, "Appuie sur E pour retourner sur le jeu", 3)
         if len(self.list_monster) == 0:
             pyxel.cls(0)
             pyxel.text(100, 130, "Vous avez gagne!", 8)

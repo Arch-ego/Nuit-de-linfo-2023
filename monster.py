@@ -5,9 +5,9 @@ class Monster:
         self.x = randint(32, 218)
         self.y = randint(144, 218)
         self.left = False
-        self.facts = facts
-        self.reponse1 = reponse1
-        self.reponse2 = reponse2
-        self.reponse3 = reponse3
-        self.reponse4 = reponse4
-        self.good_response = good_response
+        self.facts:str = facts
+        self.reponse1:str = reponse1
+        self.reponse2:str = reponse2
+        self.reponse3:str = reponse3
+        self.reponse4:str = reponse4
+        self.good_response:str = good_response
