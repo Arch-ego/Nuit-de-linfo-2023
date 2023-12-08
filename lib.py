@@ -3,7 +3,7 @@ import sqlite3, json
 database = sqlite3.connect("database/ndl.db", check_same_thread=False)
 databaseCursor = database.cursor()
 
-def getJSONData() -> dict:
+def getJSONData():
 
     """
     Récupérer les données dans la base de données
@@ -15,7 +15,7 @@ def getJSONData() -> dict:
     with open("database/data.json", "r", encoding="utf-8-sig") as file: data = json.load(file)
     return data
 
-def saveJSONData(data: dict):
+def saveJSONData(data):
 
     """
     Sauvegarder les données dans la base de données
@@ -27,7 +27,7 @@ def saveJSONData(data: dict):
     with open("database/data.json", "w", encoding="utf-8") as file: json.dump(data, file, indent=4, ensure_ascii=False)
         
 
-def getData(table: str, column: str, parameter: str, parameterVal) -> list[tuple] | tuple:
+def getData(table, column, parameter, parameterVal):
 
     if parameter == None:
         query = f"SELECT {column} FROM {table};"
@@ -41,7 +41,7 @@ def getData(table: str, column: str, parameter: str, parameterVal) -> list[tuple
 
     return queryResult
 
-def updateData(table: str, columns: str | list[str], newValues: list, parameter: str, parameterVal) -> bool:
+def updateData(table, columns, newValues, parameter, parameterVal):
     
     query = f"UPDATE {table} SET "
 
