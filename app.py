@@ -43,12 +43,6 @@ def game():
     
     return render_template("game.html")
 
-@app.route("/bilan")
-def bilan():
-    data = {}
-
-    return render_template("bilan.html", sessionData=data)
-
 
 @app.route('/api/sessions/<uuid>')
 def sessions(uuid):
