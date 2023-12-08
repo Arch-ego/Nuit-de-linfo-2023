@@ -2,15 +2,29 @@
 
 {% block content %}
 
-<div class="flex flex-column">
+<div class="flex flex-column text-center">
     <div class="text-center py-4">
-        <h1 class="text-center pb-3" style="height: max-content;">Nom du site</h1>
-        <p class="text-center pb-3 px-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat. Duis semper. Duis arcu massa, scelerisque vitae, consequat in, pretium a, enim. Pellentesque congue. Ut in risus volutpat libero pharetra tempor. Cras vestibulum bibendum augue. Praesent egestas leo in pede. Praesent blandit odio eu enim. Pellentesque sed dui ut augue blandit sodales. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam nibh. Mauris ac mauris sed pede pellentesque fermentum. Maecenas adipiscing ante non diam sodales hendrerit.</p>
+        <h1 class="text-center pb-3" style="height: max-content;">Ecodève</h1>
+        <p class="text-center pb-3 px-5">
+            Ce site est le projet de 13 lycéens de NSI au lycée Joseph Vallot de Lodève accompagnés de leur professeur lors de la nuit du code, un évènement consistant à créer un site web sur un thème donné par les organisateurs de l’évènement et de compléter des défis imposés par les partenaires de l’évènement. <br>
+            Cette année, le sujet était de taille : créer un site mettant en garde contre la désinformation notamment sur l’urgence climatique de façon ludique et accessible au grand public tout en gardant des données chiffrées et surtout des solutions. <br>
+            Notre équipe a décidé de mettre en place un jeu interactif avec l’utilisateur du site afin qu’il apprenne en s’amusant. De plus, avec les informations apportées et les liens pour que chacun puisse se renseigner plus amplement sur les sujets qui l’intéresse ou tester son empreinte carbone permet d’apporter une continuité au projet et de laisser aux utilisateurs le choix d’approfondir à leur guise !
+        </p>
     </div>
 
-    <h2 class="text-center pb-3"><img src="https://voxeurop.eu/wp-content/uploads/2022/09/211029-COP26.jpg" alt="Planete qui la subi la pollution"></h2>
-    <br>
-    <a href="/game" class="btn btn-success">Jouer</a>
+    <div class="pb-3">
+        <h2 class="text-center"><img src="/static/img/background.jpg" alt="Image de pollution"></h2>
+        <br>
+        <a href="/game" class="btn btn-lg btn-success">Jouer</a>
+    </div>
+
+    <div class="w-auto bg-white">
+        <ul class="white-bar">
+            <li>Site de la nuit de l'info: <a href="https://www.nuitdelinfo.com/">https://www.nuitdelinfo.com/</a></li>
+                <li>Site du simulateur d'empreinte carbone : <a href="https://nosgestesclimat.fr/">https://nosgestesclimat.fr/</a></li>
+                <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"><img src="/static/img/papa_noel.jpg"></a>
+        </ul>
+    </div>
 </div>
 
 {% endblock %}

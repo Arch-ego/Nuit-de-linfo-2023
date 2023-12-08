@@ -5,3 +5,7 @@ body {
 .factThanks {
     background: rgb(27, 27, 46);
 }
+
+white-bar {
+    list-style-type: none;
+}

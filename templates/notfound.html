@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404... ou 200 ?</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      gap: 4em;
+    }
+
+    canvas {
+      border: 1px solid #000;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="tetrisCanvas" width="300" height="600"></canvas>
+  <div>
+    <h1 class="fourofour">404</h1>
+    <p>Tu t'es écarté du droit chemin, mais ce n'est pas grave. <br> En attendant, voici un petit jeu pour toi. <br> Quand tu es prêt, clique <a href="/">ici</a> pour revenir parmi nous.</p>
+  </div>
+
+
+  <script>
+    const canvas = document.getElementById('tetrisCanvas');
+    const ctx = canvas.getContext('2d');
+
+    const ROWS = 20;
+    const COLS = 10;
+    const BLOCK_SIZE = 30;
+    const EMPTY = 'white';
+
+    const tetrisMatrix = Array.from({ length: ROWS }, () => Array(COLS).fill(EMPTY));
+
+    // Variables pour la pièce actuelle
+    let currentPiece = {
+      shape: [],
+      color: 'blue',
+      row: 0,
+      col: Math.floor(COLS / 2) - 1,
+    };
+
+    // Exemple de pièce en forme de T
+    currentPiece.shape = [
+      [1, 1, 1],
+      [0, 1, 0],
+    ];
+
+    function drawSquare(x, y, color) {
+      ctx.fillStyle = color;
+      ctx.fillRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+      ctx.strokeStyle = 'black';
+      ctx.strokeRect(x * BLOCK_SIZE, y * BLOCK_SIZE, BLOCK_SIZE, BLOCK_SIZE);
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      for (let row = 0; row < ROWS; row++) {
+        for (let col = 0; col < COLS; col++) {
+          const color = tetrisMatrix[row][col];
+          if (color !== EMPTY) {
+            drawSquare(col, row, color);
+          }
+        }
+      }
+
+      // Dessiner la pièce actuelle
+      for (let row = 0; row < currentPiece.shape.length; row++) {
+        for (let col = 0; col < currentPiece.shape[row].length; col++) {
+          if (currentPiece.shape[row][col]) {
+            drawSquare(currentPiece.col + col, currentPiece.row + row, currentPiece.color);
+          }
+        }
+      }
+    }
+
+    function moveDown() {
+      if (canMove(1, 0)) {
+        currentPiece.row++;
+      } else {
+        mergePiece();
+        spawnNewPiece();
+      }
+    }
+
+    function moveLeft() {
+      if (canMove(0, -1)) {
+        currentPiece.col--;
+      }
+    }
+
+    function moveRight() {
+      if (canMove(0, 1)) {
+        currentPiece.col++;
+      }
+    }
+
+    function rotate() {
+      const originalShape = currentPiece.shape;
+      const newShape = [];
+
+      for (let col = 0; col < originalShape[0].length; col++) {
+        newShape[col] = [];
+        for (let row = 0; row < originalShape.length; row++) {
+          newShape[col][row] = originalShape[originalShape.length - 1 - row][col];
+        }
+      }
+
+      if (canRotate(newShape)) {
+        currentPiece.shape = newShape;
+      }
+    }
+
+    function canRotate(newShape) {
+      for (let row = 0; row < newShape.length; row++) {
+        for (let col = 0; col < newShape[row].length; col++) {
+          if (
+            newShape[row][col] &&
+            (tetrisMatrix[currentPiece.row + row] &&
+              tetrisMatrix[currentPiece.row + row][currentPiece.col + col]) !== EMPTY
+          ) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function canMove(rowOffset, colOffset) {
+      for (let row = 0; row < currentPiece.shape.length; row++) {
+        for (let col = 0; col < currentPiece.shape[row].length; col++) {
+          if (
+            currentPiece.shape[row][col] &&
+            (tetrisMatrix[currentPiece.row + row + rowOffset] &&
+              tetrisMatrix[currentPiece.row + row + rowOffset][currentPiece.col + col + colOffset]) !== EMPTY
+          ) {
+            return false;
+          }
+        }
+      }
+      return true;
+    }
+
+    function mergePiece() {
+      for (let row = 0; row < currentPiece.shape.length; row++) {
+        for (let col = 0; col < currentPiece.shape[row].length; col++) {
+          if (currentPiece.shape[row][col]) {
+            tetrisMatrix[currentPiece.row + row][currentPiece.col + col] = currentPiece.color;
+          }
+        }
+      }
+    }
+
+    function spawnNewPiece() {
+        function spawnNewPiece() {
+  const pieces = [
+    { shape: [[1, 1, 1, 1]], color: 'cyan' },
+    { shape: [[1, 1, 1], [1]], color: 'blue' },
+    { shape: [[1, 1, 1], [0, 0, 1]], color: 'orange' },
+    { shape: [[1, 1, 1], [0, 1]], color: 'yellow' },
+    { shape: [[1, 1], [1, 1]], color: 'red' },
+    { shape: [[1, 1, 0], [0, 1, 1]], color: 'green' },
+    { shape: [[0, 1, 1], [1, 1]], color: 'purple' }
+  ];
+
+  const randomPiece = pieces[Math.floor(Math.random() * pieces.length)];
+
+  currentPiece = {
+    shape: randomPiece.shape,
+    color: randomPiece.color,
+    row: 0,
+    col: Math.floor(COLS / 2) - Math.floor(randomPiece.shape[0].length / 2)
+  };
+}
+      // Réinitialiser currentPiece à une nouvelle position en haut du tableau
+      currentPiece = {
+        shape: [
+          [1, 1, 1],
+          [0, 1, 0],
+        ],
+        color: 'blue',
+        row: 0,
+        col: Math.floor(COLS / 2) - 1,
+      };
+    }
+
+    function update() {
+      moveDown();
+      // TODO: Implémenter une logique de jeu supplémentaire (effacement des lignes, vérification du game over, etc.)
+      draw();
+    }
+
+    // Configuration initiale
+    setInterval(update, 1000); // Appeler update toutes les secondes (ajuster selon les besoins)
+
+    // Écouteurs d'événements pour l'entrée utilisateur
+    document.addEventListener('keydown', (event) => {
+      switch (event.key) {
+        case 'ArrowLeft':
+          moveLeft();
+          break;
+        case 'ArrowRight':
+          moveRight();
+          break;
+        case 'ArrowDown':
+          moveDown();
+          break;
+        case 'ArrowUp':
+          rotate();
+          break;
+      }
+    });
+  </script>
+</body>
+</html>
