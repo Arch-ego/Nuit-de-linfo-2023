@@ -1,4 +1,4 @@
-import pyxel
+import pyxel, json
 from player import Player
 from monster import Monster
 from villager import Villager
@@ -13,7 +13,13 @@ class Jeu:
         self.list_villager = [Villager(20, 0),Villager(40, 0),Villager(60, 0),Villager(80, 0),Villager(100, 0)]
         pyxel.init(256, 256, title="Nom", fps=30, quit_key=pyxel.KEY_ESCAPE)
         pyxel.run(self.update, self.draw)
-
+    
+    def creation_monstre(self):
+        with open("data.json", "r") as file:
+            json.load()
+        for i in range(5):
+            ...
+        
     def deplacement_monstre(self):
         for m in self.list_monster:
             pos = []
@@ -45,29 +51,29 @@ class Jeu:
 
     def battle(self, monster:Monster):
         if pyxel.btnp(pyxel.KEY_1):
-            if monster.bonne_number == 1:
+            if monster.good_response == 1:
                 self.player.victoire()
                 self.list_monster.remove(monster)
-            else:
-                self.player.defaite()
+            self.etat = "move"
+            self.player.x, self.player.y = 32, 32
         elif pyxel.btnp(pyxel.KEY_2):
-            if monster.bonne_number == 2:
+            if monster.good_response == 2:
                 self.player.victoire()
                 self.list_monster.remove(monster)
-            else:
-                self.player.defaite()
+            self.etat = "move"
+            self.player.x, self.player.y = 32, 32
         elif pyxel.btnp(pyxel.KEY_3):
-            if monster.bonne_number == 3:
+            if monster.good_response == 3:
                 self.player.victoire()
                 self.list_monster.remove(monster)
-            else:
-                self.player.defaite()
+            self.etat = "move"
+            self.player.x, self.player.y = 32, 32
         elif pyxel.btnp(pyxel.KEY_4):
-            if monster.bonne_number == 4:
+            if monster.good_response == 4:
                 self.player.victoire()
                 self.list_monster.remove(monster)
-            else:
-                self.player.defaite()
+            self.etat = "move"
+            self.player.x, self.player.y = 32, 32
     
     def update(self):
         if self.etat == "move":
@@ -87,7 +93,7 @@ class Jeu:
             for v in self.list_villager:
                 pyxel.rect(v.x, v.y, 16, 16, 8)
         elif self.etat == "combat":
-            pyxel.text(10, 10, f" le polluant affirme que {self.adv.affirmation}", 1)
+            pyxel.text(10, 10, f" le polluant affirme que {self.adv.facts}", 1)
             pyxel.text(10, 20, "Quelle est la vraie affirmation ?", 1)
             pyxel.text(10, 30, f"1 : {self.adv.reponse1}", 1)
             pyxel.text(10, 40, f"2 : {self.adv.reponse2}", 1)

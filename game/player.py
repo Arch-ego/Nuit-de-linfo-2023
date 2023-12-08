@@ -4,7 +4,6 @@ class Player:
     def __init__(self):
         self.x = 32
         self.y = 32
-        self.pv = 3
         self.score = 0
 
     def move(self):
@@ -23,6 +22,3 @@ class Player:
 
     def victoire(self):
         self.score += 1
-    
-    def defaite(self):
-        self.pv -= 1
