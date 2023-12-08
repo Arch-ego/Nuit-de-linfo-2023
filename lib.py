@@ -56,6 +56,15 @@ def updateData(table: str, columns: str | list[str], newValues: list, parameter:
 
     return True
 
+def getDataJSON():
+    with open("database/data.json", 'r') as dataJSON:
+        databaseJSON = json.load(dataJSON)
+    return databaseJSON
+
+def saveDataJSON(data):
+    with open("database/data.json", 'w') as dataJSON:
+        json.dump(data, dataJSON)
+
 # Example
 res = getData("NoFakes", "*", None, None)
 print(res)
