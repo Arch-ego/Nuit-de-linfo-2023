@@ -35,6 +35,10 @@ def game():
             "monsterDialog": monsterDialog,
             "badResponses": badResponses
         })
+
+    data = getDataJSON()
+    data["sessions"][userID] = context
+    saveDataJSON(data)
     
     return render_template("game.html", context=context)
 
