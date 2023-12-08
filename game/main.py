@@ -2,7 +2,7 @@ import pyxel, json
 from player import Player
 from monster import Monster
 from villager import Villager
-from random import choice
+from random import choice, shuffle
 
 class Jeu:
     def __init__ (self):
@@ -16,9 +16,13 @@ class Jeu:
     
     def creation_monstre(self):
         with open("data.json", "r") as file:
-            json.load()
+            data = json.load(file)
         for i in range(5):
-            ...
+            response: list = [r for r in data["session"]["uuid"][i]["badResponses"]].append(data["session"]["uuid"][i]["correctResponse"])
+            shuffle(response)
+        self.list_monster.append(Monster(data["session"]["uuid"][i]["monsterDialog"], response[0], response[1], response[2], response[3], response.index(data["session"]["uuid"][i]["correctResponse"])))
+            
+
         
     def deplacement_monstre(self):
         for m in self.list_monster:
