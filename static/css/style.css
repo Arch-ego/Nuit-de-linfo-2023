@@ -1,3 +1,7 @@
-body{
+body {
     background: linear-gradient(rgb(135, 206, 235), grey);
+}
+
+.factThanks {
+    background: rgb(27, 27, 46);
 }
