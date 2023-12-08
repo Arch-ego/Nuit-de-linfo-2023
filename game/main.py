@@ -9,10 +9,12 @@ class Jeu:
         self.player = Player()
         self.etat = "start"
         self.adv = None
+        self.pnj = None
         self.list_monster = []
-        self.list_villager = [Villager(20, 0),Villager(40, 0),Villager(60, 0),Villager(80, 0),Villager(100, 0)]
+        self.list_villager = [Villager(10, 20),Villager(5, 60),Villager(60, 10),Villager(60, 50),Villager(90, 90)]
         pyxel.init(256, 256, title="Nom", fps=30, quit_key=pyxel.KEY_ESCAPE)
         pyxel.load("my_resource.pyxres")
+        pyxel.playm(0, 1000, True)
         pyxel.run(self.update, self.draw)
     
     def creation_monstre(self):
@@ -23,8 +25,6 @@ class Jeu:
             response.append(data["sessions"]["uuid"][i]["correctResponse"])
             shuffle(response)
             self.list_monster.append(Monster(data["sessions"]["uuid"][i]["monsterDialog"], response[0], response[1], response[2], response[3], response.index(data["sessions"]["uuid"][i]["correctResponse"])+1))
-            
-
         
     def deplacement_monstre(self):
         for m in self.list_monster:
@@ -56,6 +56,10 @@ class Jeu:
                 self.etat = "combat"
                 self.battle(m)
                 self.adv = m
+        for v in self.list_villager:
+            if v.x <= self.player.x+16 and v.y <= self.player.y+16 and v.x+16 >= self.player.x and v.y+16 >= self.player.y:
+                self.etat = "talking"
+                self.pnj = v
 
     def battle(self, monster:Monster):
         if pyxel.btnp(pyxel.KEY_1):
@@ -83,6 +87,10 @@ class Jeu:
             self.etat = "move"
             self.player.x, self.player.y = 32, 32
     
+    def check_talk(self):
+        if pyxel.btnp(pyxel.KEY_E):
+            self.etat = "move"
+            self.player.x, self.player.y = 32, 32
     def update(self):
         if self.etat == "start":
             self.creation_monstre()
@@ -94,6 +102,8 @@ class Jeu:
             self.check_collision()
         elif self.etat == "combat":
             self.battle(self.adv)
+        elif self.etat == "talking":
+            self.check_talk()
 
     def draw(self):
         pyxel.bltm(0, 0, 0, 15, 15, 256, 256)
@@ -111,6 +121,7 @@ class Jeu:
             for v in self.list_villager:
                 pyxel.blt(v.x, v.y, 0, 51, 37, 8, 11, 7)
         elif self.etat == "combat":
+            pyxel.cls(0)
             pyxel.text(10, 10, f" le polluant affirme que {self.adv.facts}", 1)
             pyxel.text(10, 20, "Quelle est la vraie affirmation ?", 1)
             pyxel.text(10, 30, f"1 : {self.adv.reponse1}", 1)
@@ -118,5 +129,16 @@ class Jeu:
             pyxel.text(10, 50, f"3 : {self.adv.reponse3}", 1)
             pyxel.text(10, 60, f"4 : {self.adv.reponse4}", 1)
             pyxel.text(10, 70, "quelle est l'information correcte ?", 2)
+        elif self.etat == "talking":
+            pyxel.cls(0)
+            with open("data.json", "r") as file:
+                data = json.load(file)
+                
+            pyxel.text(10, 10, " Le villageois affirme que", 1)
+            pyxel.text(10, 20, f"{data['sessions']['uuid'][self.list_villager.index(self.pnj)]['NPCDialog']}", 1)
+            pyxel.text(10, 30, "Appuie sur E pour retourner sur le jeu", 3)
+        if len(self.list_monster) == 0:
+            pyxel.cls(0)
+            pyxel.text(100, 130, "Vous avez gagne!", 8)
 
 Jeu()
