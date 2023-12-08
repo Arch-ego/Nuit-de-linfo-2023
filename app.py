@@ -15,7 +15,7 @@ def index():
 
 @app.route("/game")
 def game():
-    userID = id = uuid.uuid4()
+    userID = id = str(uuid.uuid4())
     factsIDS = getData("Game", "ID", None, None)
     factsChosen = []
     context = []

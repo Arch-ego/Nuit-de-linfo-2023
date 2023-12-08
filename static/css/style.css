@@ -1,3 +1,7 @@
 body{
     background: linear-gradient(rgb(135, 206, 235), grey);
 }
+
+white-bar {
+    list-style-type: none;
+}
