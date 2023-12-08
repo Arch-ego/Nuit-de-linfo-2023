@@ -1,9 +1,14 @@
-import pyxel, json
+import pyxel, json, sqlite3
 from player import Player
 from monster import Monster
 from villager import Villager
 from random import choice, shuffle
+from os.path import join, dirname, realpath
 
+con = sqlite3.connect(join(join(dirname(realpath(__file__)),'database'), "ndl.db"), check_same_thread=False)
+cur = con.cursor()
+
+print(cur.execute("SELECT * FROM Game;").fetchall())
 class Jeu:
     def __init__ (self):
         self.player = Player()
@@ -13,12 +18,12 @@ class Jeu:
         self.list_monster = []
         self.list_villager = [Villager(10, 20),Villager(5, 60),Villager(60, 10),Villager(60, 50),Villager(90, 90)]
         pyxel.init(256, 256, title="Nom", fps=30, quit_key=pyxel.KEY_ESCAPE)
-        pyxel.load("my_resource.pyxres")
+        pyxel.load("static/my_resource.pyxres")
         pyxel.playm(0, 1000, True)
         pyxel.run(self.update, self.draw)
     
     def creation_monstre(self):
-        with open("data.json", "r") as file:
+        with open(join(join(dirname(realpath(__file__)),'database'), "data.json"), "r") as file:
             data = json.load(file)
         for i in range(5):
             response: list = [r for r in data["sessions"]["uuid"][i]["badResponses"]]
@@ -131,7 +136,7 @@ class Jeu:
             pyxel.text(10, 70, "quelle est l'information correcte ?", 2)
         elif self.etat == "talking":
             pyxel.cls(0)
-            with open("data.json", "r") as file:
+            with open(join(join(dirname(realpath(__file__)),'database'), "data.json"), "r") as file:
                 data = json.load(file)
                 
             pyxel.text(10, 10, " Le villageois affirme que", 1)
