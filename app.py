@@ -1,6 +1,6 @@
 import uuid, random
 from flask import Flask, render_template, redirect, url_for, request, session
-from lib import getData, updateData, getJSONData, saveJSONData
+from lib import getData, getDataJSON, saveDataJSON
 
 app = Flask(__name__)
 app.secret_key = b'6b1c2d979b55431bdc13c133bc026c80311b606aad7f3987b6638970bff1a5e1'
@@ -11,12 +11,10 @@ def index():
 
 @app.route("/game")
 def game():
-    userID = uuid.uuid4()
-    session["uuid"] = userID
+    userID = id = uuid.uuid4()
     factsIDS = getData("Game", "ID", None, None)
     factsChosen = []
     context = []
-    data = getJSONData()
 
     for i in range(5):
         correctResponseID = random.choice(factsIDS)[0]
@@ -37,17 +35,8 @@ def game():
             "monsterDialog": monsterDialog,
             "badResponses": badResponses
         })
-
-    data["sessions"][userID] = context
-    saveJSONData(data)
     
-    return render_template("game.html")
-
-@app.route("/bilan")
-def bilan():
-    data = {}
-
-    return render_template("bilan.html", sessionData=data)
+    return render_template("game.html", context=context)
 
 
 @app.route('/api/sessions/<uuid>')
@@ -67,14 +56,22 @@ def specificFact(id):
 
 @app.route('/bilan/<uuid>')
 def bilan(uuid):
+    data = getDataJSON()["sessions"][uuid]
+    sessionFacts = []
 
-    data = {
-        "facts": [1, 2, 3, 4, 5],
-        "correctAnswers": [1, 3, 5],
-        "incorrectAnswers": [2, 4]
-    }
+    for fact in data:
+        factID = fact["ID"]
+        factHeadline = getData("Fact", "Info", "id", factID)
+        factPageLink = f"/fact/{factID}"
 
-    return render_template("bilan.html", sessionData=data)
+        fact = {
+            "id": factID,
+            "headline": factHeadline,
+            "link": factPageLink
+        }
+        sessionFacts.append(fact)
+
+    return render_template("bilan.html", sessionFacts=sessionFacts)
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,6 +1,6 @@
 import sqlite3, json
 
-database = sqlite3.connect("database/ndl.db")
+database = sqlite3.connect("database/ndl.db", check_same_thread=False)
 databaseCursor = database.cursor()
 
 def getJSONData() -> dict:
@@ -64,7 +64,3 @@ def getDataJSON():
 def saveDataJSON(data):
     with open("database/data.json", 'w') as dataJSON:
         json.dump(data, dataJSON)
-
-# Example
-res = getData("NoFakes", "*", None, None)
-print(res)

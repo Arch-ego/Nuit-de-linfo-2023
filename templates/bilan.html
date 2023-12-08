@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="flex flex-column">
     <div class="container pt-4">
         <h1 class="text-danger fw-bold">GAME - Bilan de votre session</h1>
@@ -8,15 +9,16 @@
             Merci d'être arrivé jusqu'ici ! On espère que le jeu vous a plu. <br>
             Maintenant, voyons de plus près dans quels cas vous avez décelé les facts des fake news de la part des villageois et des monstres, en vous éduquant un peu plus sur le sujet.
         </p>
-
-        <div class="card">
-            <div class="card-body">
-              <h5 class="card-title fw-bold">Les voitures produisent 100 L de CO2 par minute.</h5>
-              <h6 class="card-subtitle text-body-secondary">Vous (n')avez (pas) réussi à déceler la fake news.(en rouge si pas réussi, en vert si réussi)</h6>
-              <p class="card-text">(Proof1) (Proof2) (Proof3) (D'autres phrases si besoin...)</p>
-              <a href="/fact/" class="btn btn-danger">En savoir plus (lien vers page de la source)</a>
+        
+        {% for fact in sessionFacts %}
+            <div class="card">
+                <div class="card-body">
+                <h5 class="card-title fw-bold">{{ fact["headline"][0] }}</h5>
+                <h6 class="card-subtitle text-success pb-2">Vous avez réussi à déceler la fake news.</h6>
+                <a href="{{ fact['link'] }}" class="btn btn-danger">En savoir plus</a>
+                </div>
             </div>
-        </div>
+        {% endfor %}
         
     </div>
 </div>
