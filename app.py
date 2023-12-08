@@ -1,5 +1,5 @@
 import uuid, random
-from flask import Flask, render_template, redirect, url_for, request, session, make_response
+from flask import Flask, render_template, request, make_response
 from lib import getData, getDataJSON, saveDataJSON
 
 app = Flask(__name__)
