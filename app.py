@@ -1,6 +1,6 @@
 import uuid, random
 from flask import Flask, render_template, redirect, url_for, request, session
-from lib import getData, updateData
+from lib import getData, updateData, getJSONData, saveJSONData
 
 app = Flask(__name__)
 app.secret_key = b'6b1c2d979b55431bdc13c133bc026c80311b606aad7f3987b6638970bff1a5e1'
@@ -11,10 +11,12 @@ def index():
 
 @app.route("/game")
 def game():
-    userID = id = uuid.uuid4()
+    userID = uuid.uuid4()
+    session["uuid"] = userID
     factsIDS = getData("Game", "ID", None, None)
     factsChosen = []
     context = []
+    data = getJSONData()
 
     for i in range(5):
         correctResponseID = random.choice(factsIDS)[0]
@@ -35,8 +37,11 @@ def game():
             "monsterDialog": monsterDialog,
             "badResponses": badResponses
         })
+
+    data["sessions"][userID] = context
+    saveJSONData(data)
     
-    return render_template("game.html", context=context)
+    return render_template("game.html")
 
 @app.route("/bilan")
 def bilan():
