@@ -1,1 +1,212 @@
-{"sessions": {"TESTINGUUID": [{"ID": 123, "correctResponse": "La bonne r\u00c3\u00a9ponse", "monsterDialog": "Le dialogue du monstre", "badResponses": ["Mauvaise r\u00c3\u00a9ponse 1", "Mauvaise r\u00c3\u00a9ponse 2", "Mauvaise r\u00c3\u00a9ponse 3"]}, {"ID": 456, "correctResponse": "La bonne r\u00c3\u00a9ponse", "monsterDialog": "Le dialogue du monstre", "badResponses": ["Mauvaise r\u00c3\u00a9ponse 1", "Mauvaise r\u00c3\u00a9ponse 2", "Mauvaise r\u00c3\u00a9ponse 3"]}, {"ID": 789, "correctResponse": "La bonne r\u00c3\u00a9ponse", "monsterDialog": "Le dialogue du monstre", "badResponses": ["Mauvaise r\u00c3\u00a9ponse 1", "Mauvaise r\u00c3\u00a9ponse 2", "Mauvaise r\u00c3\u00a9ponse 3"]}, {"ID": 234, "correctResponse": "La bonne r\u00c3\u00a9ponse", "monsterDialog": "Le dialogue du monstre", "badResponses": ["Mauvaise r\u00c3\u00a9ponse 1", "Mauvaise r\u00c3\u00a9ponse 2", "Mauvaise r\u00c3\u00a9ponse 3"]}, {"ID": 567, "correctResponse": "La bonne r\u00c3\u00a9ponse", "monsterDialog": "Le dialogue du monstre", "badResponses": ["Mauvaise r\u00c3\u00a9ponse 1", "Mauvaise r\u00c3\u00a9ponse 2", "Mauvaise r\u00c3\u00a9ponse 3"]}], "17414b2e-2d3f-49da-b2fa-36e04de059d6": [{"ID": 456, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 123, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 234, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 789, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 567, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}], "7ac4062d-0075-4123-946d-cd4093c26507": [{"ID": 789, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 567, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 234, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 456, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}, {"ID": 123, "correctResponse": null, "monsterDialog": null, "badResponses": [null, null, null]}]}}
+{
+    "sessions": {
+        "uuid": [
+            {
+                "ID": 123,
+                "correctResponse": "La bonne r\u00c3\u00a9ponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": [
+                    "Mauvaise r\u00c3\u00a9ponse 1",
+                    "Mauvaise r\u00c3\u00a9ponse 2",
+                    "Mauvaise r\u00c3\u00a9ponse 3"
+                ]
+            },
+            {
+                "ID": 456,
+                "correctResponse": "La bonne r\u00c3\u00a9ponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": [
+                    "Mauvaise r\u00c3\u00a9ponse 1",
+                    "Mauvaise r\u00c3\u00a9ponse 2",
+                    "Mauvaise r\u00c3\u00a9ponse 3"
+                ]
+            },
+            {
+                "ID": 789,
+                "correctResponse": "La bonne r\u00c3\u00a9ponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": [
+                    "Mauvaise r\u00c3\u00a9ponse 1",
+                    "Mauvaise r\u00c3\u00a9ponse 2",
+                    "Mauvaise r\u00c3\u00a9ponse 3"
+                ]
+            },
+            {
+                "ID": 234,
+                "correctResponse": "La bonne r\u00c3\u00a9ponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": [
+                    "Mauvaise r\u00c3\u00a9ponse 1",
+                    "Mauvaise r\u00c3\u00a9ponse 2",
+                    "Mauvaise r\u00c3\u00a9ponse 3"
+                ]
+            },
+            {
+                "ID": 567,
+                "correctResponse": "La bonne r\u00c3\u00a9ponse",
+                "monsterDialog": "Le dialogue du monstre",
+                "badResponses": [
+                    "Mauvaise r\u00c3\u00a9ponse 1",
+                    "Mauvaise r\u00c3\u00a9ponse 2",
+                    "Mauvaise r\u00c3\u00a9ponse 3"
+                ]
+            }
+        ],
+        "17414b2e-2d3f-49da-b2fa-36e04de059d6": [
+            {
+                "ID": 456,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 123,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 234,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 789,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 567,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "7ac4062d-0075-4123-946d-cd4093c26507": [
+            {
+                "ID": 789,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 567,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 234,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 456,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 123,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ],
+        "26acf07e-2ded-4d41-ae04-a7084db89833": [
+            {
+                "ID": 123,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 567,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 456,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 234,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            },
+            {
+                "ID": 789,
+                "correctResponse": null,
+                "monsterDialog": null,
+                "badResponses": [
+                    null,
+                    null,
+                    null
+                ]
+            }
+        ]
+    }
+}
