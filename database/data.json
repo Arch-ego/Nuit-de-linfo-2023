@@ -1,6 +1,6 @@
 {
     "sessions": {
-        "uuid": [
+        "TESTINGUUID": [
             {
                 "ID": 123,
                 "correctResponse": "La bonne réponse",
