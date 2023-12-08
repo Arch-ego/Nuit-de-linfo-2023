@@ -16,11 +16,11 @@ class Joueur:
         self.pvmax = self.pv
 
         #reponse possible contre un monstre défini en fonction de la fake new du monstre
-        self.reponse1 = "aleatoire SQL rep 1"
-        self.reponse2 = "aleatoire SQL rep 2"
-        self.reponse3 = "aleatoire SQL rep 3"
-        self.reponse4 = "aleatoire SQL rep 4"
-        self.bonne_reponse = "self.reponse1/2/3/4"
+        self.bonne_reponse = "self.reponsedejson"
+        self.reponse1 = "json fake rep1"
+        self.reponse2 = "json fake rep2"
+        self.reponse3 = "json fake rep3"
+        
 
 
     def victoire(self):

@@ -31,12 +31,13 @@ class Jeu:
     def battle(self):
         print(f" le polluant affirme que {self.mob.fakenew}")
         print("Quelle est la vraie affirmation ?")
-        print(f"1 : {self.joueur.reponse1}")
+        print(f"1 : {self.joueur.bonne_reponse}")
         print(f"2 : {self.joueur.reponse2}")
         print(f"3 : {self.joueur.reponse3}")
         print(f"4 : {self.joueur.reponse4}")
         reponse = int(input("quelle est l'information correcte ? "))
-        if reponse == self.joueur.bonne_reponse:
+        #actuellement pas aléatoire, ça sera forcement la première réponse
+        if reponse == 1:
             print("vous avez éradiquer la fake nex !")
             self.joueur.plus_nb_bonne_reponse()
         else :
