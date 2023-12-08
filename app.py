@@ -1,4 +1,4 @@
-import uuid, random
+import uuid, random, requests, urllib.parse
 from flask import Flask, render_template, redirect, url_for, request, session
 from lib import getData, getDataJSON, saveDataJSON
 
@@ -11,7 +11,19 @@ def notfound(e):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    """if request.args.get('lang', default="fr") == None:
+        translatedText = {}
+
+        headers = {
+            "Authorization": "DeepL-Auth-Key 9b267d6b-166b-e365-0c72-8a1c7563d476:fx",
+            "Content-Type": "x-www-form-urlencoded"
+        }
+        requestData = {
+            "text": urllib.parse.quote_plus()
+        }
+
+        return render_template("translateindex.html", translatedText=translatedText)"""
+    return render_template("index.html", lang=request.args.get('lang', default="fr"))
 
 @app.route("/game")
 def game():
