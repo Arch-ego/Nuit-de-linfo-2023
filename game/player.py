@@ -5,14 +5,17 @@ class Player:
         self.x = 32
         self.y = 32
         self.score = 0
+        self.back = False
 
     def move(self):
         if pyxel.btnp(pyxel.KEY_UP):
             if self.y - 10 > 0:
                 self.y -= 10
+            self.back = True
         if pyxel.btnp(pyxel.KEY_DOWN):
             if self.y + 10 < 256:
                 self.y += 10
+            self.back = False
         if pyxel.btnp(pyxel.KEY_RIGHT):
             if self.x + 10 < 256:
                 self.x += 10

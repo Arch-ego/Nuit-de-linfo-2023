@@ -7,20 +7,22 @@ from random import choice, shuffle
 class Jeu:
     def __init__ (self):
         self.player = Player()
-        self.etat = "move"
+        self.etat = "start"
         self.adv = None
-        self.list_monster = [Monster(),Monster(),Monster(),Monster(),Monster()]
+        self.list_monster = []
         self.list_villager = [Villager(20, 0),Villager(40, 0),Villager(60, 0),Villager(80, 0),Villager(100, 0)]
         pyxel.init(256, 256, title="Nom", fps=30, quit_key=pyxel.KEY_ESCAPE)
+        pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw)
     
     def creation_monstre(self):
         with open("data.json", "r") as file:
             data = json.load(file)
         for i in range(5):
-            response: list = [r for r in data["session"]["uuid"][i]["badResponses"]].append(data["session"]["uuid"][i]["correctResponse"])
+            response: list = [r for r in data["sessions"]["uuid"][i]["badResponses"]]
+            response.append(data["sessions"]["uuid"][i]["correctResponse"])
             shuffle(response)
-        self.list_monster.append(Monster(data["session"]["uuid"][i]["monsterDialog"], response[0], response[1], response[2], response[3], response.index(data["session"]["uuid"][i]["correctResponse"])))
+            self.list_monster.append(Monster(data["sessions"]["uuid"][i]["monsterDialog"], response[0], response[1], response[2], response[3], response.index(data["sessions"]["uuid"][i]["correctResponse"])+1))
             
 
         
@@ -39,8 +41,10 @@ class Jeu:
                 res = choice(pos)
                 if res == "d":
                     m.x += 16
+                    m.left = False
                 elif res == "g":
                     m.x -= 16
+                    m.left = True
                 elif res == "h":
                     m.y -= 16
                 elif res == "b":
@@ -80,6 +84,9 @@ class Jeu:
             self.player.x, self.player.y = 32, 32
     
     def update(self):
+        if self.etat == "start":
+            self.creation_monstre()
+            self.etat = "move"
         if self.etat == "move":
             self.player.move()
             if pyxel.frame_count % 30 == 1:
@@ -89,13 +96,20 @@ class Jeu:
             self.battle(self.adv)
 
     def draw(self):
-        pyxel.cls(0)
+        pyxel.bltm(0, 0, 0, 15, 15, 256, 256)
         if self.etat == "move":
-            pyxel.rect(self.player.x, self.player.y, 16, 16, 3)
+            if self.player.back:
+                pyxel.blt(self.player.x, self.player.y, 0, 35, 37, 9, 11, 7)
+            else:
+                pyxel.blt(self.player.x, self.player.y, 0, 19, 37, 9, 11, 7)
             for m in self.list_monster:
-                pyxel.rect(m.x, m.y, 16, 16, 7)
+                if m.left:
+                    pyxel.blt(m.x, m.y, 0, 35, 58, 9, 7, 7)
+                else:
+                    pyxel.blt(m.x, m.y, 0, 51, 58, 9, 7, 7)
+
             for v in self.list_villager:
-                pyxel.rect(v.x, v.y, 16, 16, 8)
+                pyxel.blt(v.x, v.y, 0, 51, 37, 8, 11, 7)
         elif self.etat == "combat":
             pyxel.text(10, 10, f" le polluant affirme que {self.adv.facts}", 1)
             pyxel.text(10, 20, "Quelle est la vraie affirmation ?", 1)
