@@ -67,9 +67,9 @@ def sessions(uuid):
 def specificFact(id):
     factTuple = getData("Fact", "*", "id", id)
     fact = {
-        "info": factTuple[0],
-        "fullText": factTuple[1],
-        "source": factTuple[2]
+        "info": factTuple[1],
+        "fullText": factTuple[2],
+        "source": factTuple[3]
     }
 
     return render_template("specificfact.html", factData=fact)
