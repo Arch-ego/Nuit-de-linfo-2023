@@ -46,24 +46,28 @@ class Jeu:
     def battle(self, monster:Monster):
         if pyxel.btnp(pyxel.KEY_1):
             if monster.bonne_number == 1:
-                self.player.plus_nb_bonne_reponse()
+                self.player.victoire()
+                self.list_monster.remove(monster)
             else:
-                self.player.plus_nb_mauvaise_reponse()
+                self.player.defaite()
         elif pyxel.btnp(pyxel.KEY_2):
             if monster.bonne_number == 2:
-                self.player.plus_nb_bonne_reponse()
+                self.player.victoire()
+                self.list_monster.remove(monster)
             else:
-                self.player.plus_nb_mauvaise_reponse()
+                self.player.defaite()
         elif pyxel.btnp(pyxel.KEY_3):
             if monster.bonne_number == 3:
-                self.player.plus_nb_bonne_reponse()
+                self.player.victoire()
+                self.list_monster.remove(monster)
             else:
-                self.player.plus_nb_mauvaise_reponse()
+                self.player.defaite()
         elif pyxel.btnp(pyxel.KEY_4):
             if monster.bonne_number == 4:
-                self.player.plus_nb_bonne_reponse()
+                self.player.victoire()
+                self.list_monster.remove(monster)
             else:
-                self.player.plus_nb_mauvaise_reponse()    
+                self.player.defaite()
     
     def update(self):
         if self.etat == "move":

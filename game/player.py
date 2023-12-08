@@ -4,32 +4,25 @@ class Player:
     def __init__(self):
         self.x = 32
         self.y = 32
-        self.speed = 10
-        self.nb_mauvaise_reponse = 0
-        self.nb_bonne_reponse = 0
-        self.pv = 5
-        self.pvmax = self.pv
+        self.pv = 3
+        self.score = 0
 
     def move(self):
         if pyxel.btnp(pyxel.KEY_UP):
-            if self.y - self.speed > 0:
-                self.y -= self.speed
+            if self.y - 10 > 0:
+                self.y -= 10
         if pyxel.btnp(pyxel.KEY_DOWN):
-            if self.y + self.speed < 256:
-                self.y += self.speed
+            if self.y + 10 < 256:
+                self.y += 10
         if pyxel.btnp(pyxel.KEY_RIGHT):
-            if self.x + self.speed < 256:
-                self.x += self.speed
+            if self.x + 10 < 256:
+                self.x += 10
         if pyxel.btnp(pyxel.KEY_LEFT):
-            if self.x - self.speed > 0:
-                self.x -= self.speed
+            if self.x - 10 > 0:
+                self.x -= 10
 
     def victoire(self):
         self.score += 1
-
-    def plus_nb_bonne_reponse(self):
-        self.nb_bonne_reponse += 1
-
-    def plus_nb_mauvaise_reponse(self):
-        self.nb_mauvaise_reponse += 1
+    
+    def defaite(self):
         self.pv -= 1
